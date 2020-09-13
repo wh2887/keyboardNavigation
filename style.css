@@ -1,0 +1,212 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+img{
+    max-width: 100%;
+}
+button,input,label{
+    border: none;
+    order: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    
+    /* 张鑫旭大佬 */
+    background-image: url(./images/background.jpg);
+    --transparent: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+    /* Safari最近版本已经不需要私有前缀了 */
+    background-image: cross-fade(var(--transparent), url(./images/bg3.jpg), 40%);
+    /* 如使用自定义属性，-webkit-语句需要放在没有私有前缀语句的下面 */
+    background-image: -webkit-cross-fade(var(--transparent), url(./images/bg3.jpg), 40%);
+    background-size: cover;
+    position: relative;
+}
+.wrapper .mask{
+    width: 100vw;
+    height: 100vh;
+    z-index: 6;
+    position: absolute;
+    background: rgba(0, 0, 0, 30%);
+    -webkit-backdrop-filter: blur(4px);	
+    backdrop-filter: blur(4px);	
+    animation: fade-in 2s;
+}
+@keyframes fade-in{
+    0%{
+        -webkit-backdrop-filter: blur(0px);	
+    backdrop-filter: blur(0px);	
+    }
+    100%{
+        -webkit-backdrop-filter: blur(4px);	
+        backdrop-filter: blur(4px);	    
+    }
+}
+.wrapper .mask .content{
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    left: 50%;
+    margin-left: -15vw;
+    border-radius: .6em;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: action_translateYOut .5s;
+}
+@keyframes action_translateYOut{
+    0%{transform: translateY(-100%);opacity: 0;}
+    100%{ transform: translateY(0);opacity: 1;}
+}
+.wrapper .mask .content form{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.wrapper .mask .content .abc-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper .mask .content label{
+    flex-shrink: 0;
+    padding-right: 9px;
+}
+.abc{
+    flex-grow: 1;
+    width: 100%;
+    padding: .6em .3em;
+    margin: .3em;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+}
+
+.wrapper .mask .content input{
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: .6em .3em;
+    margin: .3em;
+    position: relative;
+}
+.wrapper .mask .content .maskButtons{
+    padding: 1em;
+    position: absolute;
+    bottom: .3em;
+    right: .2em;
+}
+.wrapper .mask .content .maskButtons button{
+    border: 1px solid #ccc; 
+    border-radius: .3em;
+    padding: .5em 1.5em;
+    
+}
+.submit{
+    background: #1A73E8;
+}
+.cancel:hover, .submit:hover{
+ background: rgba(126,138,151, .1);
+}
+
+
+.wrapper .mask .content .close{
+    position: absolute;
+    right: .2em;
+    top: .2em;
+    font-size: 2em;
+}
+.wrapper .mask .content .close:hover{
+    color: red;
+}
+
+/* 设置 布局 */
+.wrapper .settings{
+    position: absolute;
+    left: .6em;
+    top: .6em;
+}
+.wrapper .settings .icon{
+    font-size: 5em;
+}
+
+
+/* 键盘 布局 */
+.keyboard-wrapper{
+    width: 70vw;
+    height: 50vh;
+    border-radius: 16px;
+    box-shadow: -8px -5px 4px rgba(141, 147, 171, 30%);
+    background: hsla(0, 0%, 100%, .45);
+    -webkit-backdrop-filter: blur(5px);    
+    backdrop-filter: blur(5px);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.key-wrapper .line{
+    display: flex;
+    justify-content: center;
+}
+
+.key{
+    width: 3em;
+    height: 3em;
+    color: white;
+    background: #1a1a2e;
+    border-radius: .6em;
+    border: 1px solid #797a7e;
+    box-shadow: 0 0 0 1px rgba(31, 33, 33, .5),
+                0 0 0 2px  rgba(8, 8, 8, .5),
+                0 2px 0 2px  rgba(8, 7, 11, .5);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    user-select: none;
+    margin: .3em;
+    position: relative;
+}
+.key img{
+    position: absolute;
+    bottom: .3em;
+    right: .3em;
+    width: .6em;
+}
+.shadow-down{
+    box-shadow: 0 0 0 1px rgba(31, 33, 33, .5),
+                4px 4px 10px 2px rgba(26, 26, 26, .3);
+}
+.line-one .key{
+    margin-top: 1em;
+}
+.line-three .key{
+    margin-bottom: 1em;
+}
+
+
+

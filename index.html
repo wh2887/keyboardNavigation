@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>键盘导航</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="mask" style="display: block;">
+            <div class="content">
+
+                <form action="">
+                    <span class="abc-wrapper">
+                        <label for="abc">字母:</label>
+                        <select id="abc" class="abc">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                            <option>F</option>
+                            <option>G</option>
+                            <option>H</option>
+                            <option>I</option>
+                            <option>J</option>
+                            <option>K</option>
+                            <option>L</option>
+                            <option>M</option>
+                            <option>N</option>
+                            <option>O</option>
+                            <option>P</option>
+                            <option>Q</option>
+                            <option>R</option>
+                            <option>S</option>
+                            <option>T</option>
+                            <option>U</option>
+                            <option>V</option>
+                            <option>W</option>
+                            <option>X</option>
+                            <option>Y</option>
+                            <option>Z</option>
+                        </select>
+                    </span>
+                    <span>
+                        网站:&nbsp;&nbsp; <input class="website" type=" text" value="">
+                    </span>
+                </form>
+
+                <div class="maskButtons">
+                    <button class="cancel"> 取消 </button>
+                    <button class="submit"> 提交 </button>
+                </div>
+
+                <button class="close">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="settings">
+            <button>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-settings"></use>
+                </svg>
+            </button>
+        </div>
+
+        <div class="keyboard-wrapper">
+            <div class="key-wrapper">
+                <div class="line line-one">
+                    <div class="key">Q</div>
+                    <div class="key">W</div>
+                    <div class="key">E</div>
+                    <div class="key">R</div>
+                    <div class="key">T</div>
+                    <div class="key">Y</div>
+                    <div class="key">U</div>
+                    <div class="key">I</div>
+                    <div class="key">O</div>
+                    <div class="key">P</div>
+                </div>
+                <div class="line line-two">
+                    <div class="key">A</div>
+                    <div class="key">S</div>
+                    <div class="key">D</div>
+                    <div class="key">F</div>
+                    <div class="key">G</div>
+                    <div class="key">H</div>
+                    <div class="key">J</div>
+                    <div class="key">K</div>
+                    <div class="key">L</div>
+                </div>
+                <div class="line line-three">
+                    <div class="key">Z</div>
+                    <div class="key">X</div>
+                    <div class="key">C</div>
+                    <div class="key">V</div>
+                    <div class="key">B</div>
+                    <div class="key">N</div>
+                    <div class="key">M</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//at.alicdn.com/t/font_1867773_c0tac9t3xk.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
