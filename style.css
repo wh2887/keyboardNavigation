@@ -43,18 +43,8 @@ button,input,label{
     background: rgba(0, 0, 0, 30%);
     -webkit-backdrop-filter: blur(4px);	
     backdrop-filter: blur(4px);	
-    animation: fade-in 2s;
 }
-@keyframes fade-in{
-    0%{
-        -webkit-backdrop-filter: blur(0px);	
-    backdrop-filter: blur(0px);	
-    }
-    100%{
-        -webkit-backdrop-filter: blur(4px);	
-        backdrop-filter: blur(4px);	    
-    }
-}
+
 .wrapper .mask .content{
     width: 30vw;
     height: 30vh;
@@ -67,12 +57,8 @@ button,input,label{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    animation: action_translateYOut .5s;
 }
-@keyframes action_translateYOut{
-    0%{transform: translateY(-100%);opacity: 0;}
-    100%{ transform: translateY(0);opacity: 1;}
-}
+
 .wrapper .mask .content form{
     height: 10vh;
     display: flex;
