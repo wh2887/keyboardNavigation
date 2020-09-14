@@ -1,7 +1,7 @@
 const keys = document.querySelectorAll('.key')
 let sites = window.localStorage.getItem("siteStorage")
 let sitesObject = JSON.parse(sites)
-let hashMap = sitesObject
+let hashMap = sitesObject || [{ id: 'default', key: '#', url: 'testUrl', logo: 'noLogo' }]
 
 
 const website = document.querySelector('.website')
@@ -51,18 +51,33 @@ window.onbeforeunload = () => {
 
 
 submit.addEventListener('click', () => {
-    const abc = select.options[select.selectedIndex].text
     userUrl = website.value
-    userKey = abc
-    hashMap.push({
-        id: 0,
-        key: userKey,
-        url: userUrl,
-        logo: userUrl + '/favicon.ico'
+    userKey = select.options[select.selectedIndex].text
+    hashMap.forEach((node, index) => {
+        if (node.key === userKey) {
+            let repeat = index
+            let result = window.confirm("按键已被设置，您确定要覆盖之前的设置吗？")
+
+            if (result) {
+                // 确定 要 覆盖
+                hashMap.splice(repeat, 1, { id: '替换的', key: userKey, url: userUrl, logo: userUrl + '/favicon.ico' })
+            } else { return }
+        } else if (node.url === userUrl) {
+            window.alert('输入的网址已经被设置了，请重新输入新的网址！')
+        } else {
+            hashMap.push({
+                id: 0,
+                key: userKey,
+                url: userUrl,
+                logo: userUrl + '/favicon.ico'
+            })
+            render()
+            close()
+        }
     })
     render()
-    close()
 })
+
 
 
 // 关闭 | 显示 弹窗
@@ -78,8 +93,8 @@ closeElement.addEventListener('click', () => {
 cancel.addEventListener('click', () => {
     close()
 })
+
 setting.addEventListener('click', () => {
     show()
 })
 
-console.log('hashMap:', hashMap)
