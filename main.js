@@ -28,18 +28,24 @@ const render = () => {
                 const img = document.createElement('img')
                 img.src = node.url + node.logo
                 key.appendChild(img)
+                key.addEventListener('click', (e) => {
+                    select.value = e.target.innerText
+                    if (e.target.innerText === node.key) {
+                        website.value = node.url
+                    }
+                    show()
+                })
+            } else {
+                key.addEventListener('click', (e) => {
+                    select.value = e.target.innerText
+                    if (e.target.innerText === node.key) {
+                        website.value = node.url
+                    }
+                    show()
+                })
             }
 
-
-
-
         })
-        key.addEventListener('click', (e) => {
-            const clickedElement = e.target
-            select.value = e.target.innerText
-            show()
-        })
-
         key.addEventListener('mousedown', () => {
             key.classList.add('shadow-down')
         })
@@ -49,9 +55,13 @@ const render = () => {
         key.addEventListener('mouseout', () => {
             key.classList.remove('shadow-down')
         })
+
     })
 }
 render()
+
+
+
 
 submit.addEventListener('click', () => {
     userKey = select.value
@@ -62,7 +72,6 @@ submit.addEventListener('click', () => {
     render()
     close()
 })
-
 
 
 window.onbeforeunload = () => {
@@ -78,10 +87,10 @@ window.onbeforeunload = () => {
 };
 
 
-
 // 关闭 | 显示 弹窗
 function close() {
     mask.style.display = 'none'
+    website.value = ""
 }
 function show() {
     document.removeEventListener('keypress', openWebsite, false)   // 删除 keypress 事件，防止输入时跳转。
@@ -92,6 +101,7 @@ closeElement.addEventListener('click', () => {
 })
 cancel.addEventListener('click', () => {
     close()
+    document.addEventListener('keypress', openWebsite, false)
 })
 
 setting.addEventListener('click', () => {
@@ -104,7 +114,6 @@ let openWebsite = (e) => {
     console.log('2', 2)
     hashMap.forEach(node => {
         if (node.key.toLowerCase() === e.key) {
-            let x = e.key
             if (node.key = e.key.toUpperCase()) {
                 // window.open(node.url)
                 location.assign(node.url)
