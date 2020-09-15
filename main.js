@@ -29,17 +29,10 @@ const render = () => {
                 img.src = node.url + node.logo
                 key.appendChild(img)
             }
-            let openWebsite = (e) => {
-                console.log('e.key', e.key)   // 两层循环，导致了 log 出了 26*(e.key) 数量的东西
-                if (e.key === node.key.toLowerCase()) {
-                    window.open(node.url)
-                    // location.assign(node.url)
-                }
-            }
-            document.addEventListener('keypress', openWebsite, false)
-            website.addEventListener('input', () => {
-                document.removeEventListener('keypress', openWebsite)
-            })
+
+
+
+
         })
         key.addEventListener('click', (e) => {
             const clickedElement = e.target
@@ -91,6 +84,7 @@ function close() {
     mask.style.display = 'none'
 }
 function show() {
+    document.removeEventListener('keypress', openWebsite, false)   // 删除 keypress 事件，防止输入时跳转。
     mask.style.display = 'block'
 }
 closeElement.addEventListener('click', () => {
@@ -104,3 +98,19 @@ setting.addEventListener('click', () => {
     show()
 })
 
+
+//  打开网页
+let openWebsite = (e) => {
+    console.log('2', 2)
+    hashMap.forEach(node => {
+        if (node.key.toLowerCase() === e.key) {
+            let x = e.key
+            if (node.key = e.key.toUpperCase()) {
+                // window.open(node.url)
+                location.assign(node.url)
+            }
+        }
+    })
+
+}
+document.addEventListener('keypress', openWebsite, false)
