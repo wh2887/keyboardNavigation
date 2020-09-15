@@ -1,21 +1,21 @@
 const keys = document.querySelectorAll('.key')
+const clearButton = document.querySelector('.clear')
+const select = document.querySelector('.abc')
 const website = document.querySelector('.website')
 const submit = document.querySelector('.submit')
-const select = document.querySelector('.abc')
 let userUrl = ""
 let userKey = ""
 const mask = document.querySelector('.mask')
 const closeElement = document.querySelector('.close')
 const cancel = document.querySelector('.cancel')
-const setting = document.querySelector('.settings')
+
 let sites = window.localStorage.getItem("siteStorage")
 let sitesObject = JSON.parse(sites)
+// console.log('sitesObject', )
 let hashMap = sitesObject || [
-    { id: 0, key: 'B', url: 'https://baidu.com', logo: '/favicon.ico' },
-    { id: 0, key: 'J', url: 'https://jingdong.com', logo: '/favicon.ico' },
+    { id: 0, key: 'B', url: 'https://www.baidu.com', logo: '/favicon.ico' },
+    { id: 1, key: 'T', url: 'https://www.taobao.com', logo: '/favicon.ico' }
 ]
-
-
 const render = () => {
     keys.forEach(key => {
         hashMap.forEach(node => {
@@ -60,32 +60,33 @@ const render = () => {
 }
 render()
 
-
-
-
 submit.addEventListener('click', () => {
     userKey = select.value
     userUrl = website.value
-    hashMap.push({
-        id: '3', key: userKey, url: userUrl, logo: '/favicon.ico'
+    hashMap.forEach((node, index) => {
+        if (node.url === userUrl) {
+            let usedNodeIndex = index
+            hashMap.splice(usedNodeIndex, 1)
+        }
+        hashMap.push({ id: '3', key: userKey, url: userUrl, logo: '/favicon.ico' })
     })
     render()
     close()
 })
-
+render()
 
 window.onbeforeunload = () => {
     // 保证 key 不重复
     let uniqueHashMap = Object.values(
-        hashMap.reduce((uniqueHashMapMap, item) => {
-            uniqueHashMapMap[item.key] = item
-            return uniqueHashMapMap
+        hashMap.reduce((uniqueHashMap, item) => {
+            uniqueHashMap[item.key] = item
+            return uniqueHashMap
         }, [])
     )
     let string = JSON.stringify(uniqueHashMap);
     window.localStorage.setItem("siteStorage", string);
+    hashMap = uniqueHashMap
 };
-
 
 // 关闭 | 显示 弹窗
 function close() {
@@ -104,10 +105,11 @@ cancel.addEventListener('click', () => {
     document.addEventListener('keypress', openWebsite, false)
 })
 
-setting.addEventListener('click', () => {
-    show()
+// 清空 数据
+clearButton.addEventListener('click', () => {
+    hashMap = [{}]
+    window.reload()
 })
-
 
 //  打开网页
 let openWebsite = (e) => {
@@ -120,6 +122,5 @@ let openWebsite = (e) => {
             }
         }
     })
-
 }
 document.addEventListener('keypress', openWebsite, false)

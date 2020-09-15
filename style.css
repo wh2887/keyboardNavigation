@@ -105,13 +105,13 @@ button,input,label{
 }
 
 /* 设置 布局 */
-.wrapper .settings{
+.wrapper .clear{
     position: absolute;
     left: .6em;
-    top: .6em;
+    bottom: .6em;
 }
-.wrapper .settings .icon{
-    font-size: 5em;
+.wrapper .clear .icon{
+    font-size: 3em;
 }
 
 
@@ -177,4 +177,51 @@ button,input,label{
 }
 
 
+@media (min-width:0){
+    body{
+        font-size: 6px;
+    }
+    .keyboard-wrapper{
+        width: 100vw;
+        height: 100vh;
+    }
+}
+@media (min-width:576px){
+    body{
+        font-size: 8px;
+    }
+    .keyboard-wrapper{
+        width: 100vw;
+        height: 80vh;
+    }
+}
+@media (min-width:768px){
+    body{
+        font-size: 10px;
+    }
+    .keyboard-wrapper{
+        width: 70vw;
+        height: 50vh;
+    }
+}
+
+@media (min-width:992px){
+    body{
+        font-size: 12px;
+    }
+    .keyboard-wrapper{
+        width: 70vw;
+        height: 50vh;
+    }
+}
+
+@media (min-width:1200px){
+    body{
+        font-size: 14px;
+    }
+    .keyboard-wrapper{
+        width: 70vw;
+        height: 50vh;
+    }
+}
 
