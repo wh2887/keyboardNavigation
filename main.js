@@ -16,11 +16,12 @@ let hashMap = sitesObject || [
     { id: 0, key: 'B', url: 'https://www.baidu.com', logo: '/favicon.ico' },
     { id: 1, key: 'T', url: 'https://www.taobao.com', logo: '/favicon.ico' }
 ]
+
+
 const render = () => {
     keys.forEach(key => {
         hashMap.forEach(node => {
             if (key.innerText === node.key) {
-                // 删除 key 原有的子元素 ，再更新子元素。
                 while (key.hasChildNodes()) {
                     key.removeChild(key.firstChild)
                 }
@@ -35,16 +36,13 @@ const render = () => {
                     }
                     show()
                 })
-            } else {
+            }
+            else {
                 key.addEventListener('click', (e) => {
                     select.value = e.target.innerText
-                    if (e.target.innerText === node.key) {
-                        website.value = node.url
-                    }
                     show()
                 })
             }
-
         })
         key.addEventListener('mousedown', () => {
             key.classList.add('shadow-down')
@@ -55,7 +53,6 @@ const render = () => {
         key.addEventListener('mouseout', () => {
             key.classList.remove('shadow-down')
         })
-
     })
 }
 render()
@@ -73,7 +70,6 @@ submit.addEventListener('click', () => {
     render()
     close()
 })
-render()
 
 window.onbeforeunload = () => {
     // 保证 key 不重复
